@@ -1,12 +1,19 @@
 #include <Wire.h>
 #include <SoftwareSerial.h>
+#include <Servo.h>
+
 
 const int triggerOutput = 22; // Trigger Pin of Ultrasonic Sensor
 const int echoInput = 23; // Echo Pin of Ultrasonic Sensor
+const byte servoOutput=2;
+Servo myServo;
+
 SoftwareSerial mySerial(18,19);
 
 void setup()
 {
+myServo.attach(int(servoOutput));
+myServo.write(0);
 mySerial.begin(9600);
 Serial1.begin(9600);
 Wire.begin();
